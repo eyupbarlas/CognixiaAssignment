@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Dashboard</title>
+</head>
+<body style="background-color: beige">
+<br>
+<div class="container text-center">
+    <h1 style="color: blueviolet">Dashboard</h1>
+    <br>
+    <p>Admin will have a view page where all the resumes will be visible in the table along with a link to the uploaded resume.</p>
+</div>
+<div class="container">
+    <table class="table table-success table-striped table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Resume</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <th th:text="${user.getId()}" scope="row"></th>
+            <td th:text="${user.getName()}"></td>
+            <!--TODO: resume link will be here-->
+            <td>
+                <a th:href="${user.getFileName()}" th:text="${user.getFileName()}"></a>
+            </td>
+            <!--TODO: resume link is slided to bottom line, I don't know why
+                TODO: There should be a PDF download feature, DownloadFile controller is built for it but couldn't connect.
+            -->
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
